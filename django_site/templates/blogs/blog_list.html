@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block title %}Blogs{% endblock %}
+
+{% block content %}
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+    <h1>Blogs ✍️</h1>
+    <p>
+        Ideas, experiments, failures and lessons learned
+        while building cloud-native and DevOps systems.
+    </p>
+</section>
+
+<!-- BLOG LIST -->
+<section class="section">
+
+    <div class="modern-grid">
+
+        {% for blog in blogs %}
+        <a href="/blogs/{{ blog.slug }}/" class="modern-card">
+
+            <h3>{{ blog.title }}</h3>
+
+            <p style="font-size:14px;color:#64748b;margin-bottom:10px;">
+                Published on {{ blog.created_at|date:"d M Y" }}
+            </p>
+
+            <p>
+                {{ blog.content|truncatewords:60 }}
+            </p>
+
+            <p style="margin-top:12px;color:#2563eb;font-weight:600;">
+                Read more →
+            </p>
+
+        </a>
+        {% empty %}
+        <div class="modern-card" style="text-align:center;">
+            <p style="font-size:17px;color:#64748b;">
+                No blogs published yet 🚀 <br>
+                Start writing and sharing your journey.
+            </p>
+        </div>
+        {% endfor %}
+
+    </div>
+
+</section>
+
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-inner">
+        <h1>Build. Learn. Evolve. 🚀</h1>
+
+        <p class="hero-subtitle">
+            Turning curiosity into skills, and skills into impact.
+        </p>
+
+        <p class="hero-tags">
+            DevOps • Cloud • Automation • Continuous Learning
+        </p>
+
+        <div class="cta">
+            <a href="/devops/" class="btn primary">Explore DevOps</a>
+            <a href="/blogs/" class="btn secondary">Read Blogs</a>
+        </div>
+    </div>
+</section>
+
+<!-- HOME CARDS (ADMIN DRIVEN) -->
+<section class="section">
+    <div class="modern-grid">
+
+        {% for item in items %}
+        <a href="{{ item.link }}" class="modern-card">
+
+            {% if item.image %}
+                <img src="{{ item.image.url }}"
+                     alt="{{ item.title }}"
+                     style="width:100%;height:160px;object-fit:contain;margin-bottom:14px;">
+            {% endif %}
+
+            <h3>{{ item.title }}</h3>
+            <p>{{ item.description }}</p>
+
+        </a>
+        {% endfor %}
+
+    </div>
+</section>
+
+{% endblock %}

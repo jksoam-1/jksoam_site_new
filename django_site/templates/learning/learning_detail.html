@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+
+<section class="blog-detail">
+
+    <h1>{{ topic.title }}</h1>
+
+    {% if topic.cover_image %}
+        <img src="{{ topic.cover_image.url }}"
+             class="blog-detail-cover">
+    {% endif %}
+
+    <article class="blog-content">
+        {{ topic.content|linebreaks }}
+    </article>
+
+</section>
+
+{% endblock %}

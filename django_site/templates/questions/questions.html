@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+
+{% block title %}Q&A{% endblock %}
+
+{% block content %}
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+    <h1>Q&amp;A 🤔</h1>
+    <p>
+        Ask anything about DevOps, Cloud or Automation.
+        Clear answers will be shared by admin.
+    </p>
+</section>
+
+<!-- MAIN CONTENT -->
+<section class="section">
+
+    <!-- ASK QUESTION CARD -->
+    <div class="modern-card" style="max-width:700px;margin:0 auto 50px;">
+
+        <h3 style="font-size:22px;margin-bottom:6px;">
+            Ask your question ✍️
+        </h3>
+
+        <p style="font-size:14px;color:#64748b;margin-bottom:16px;">
+            Keep it clear and within <strong>100 words</strong>.
+            This helps in giving precise answers.
+        </p>
+
+        <form method="post">
+            {% csrf_token %}
+
+            {{ form.question }}
+
+            <div style="display:flex;justify-content:flex-end;margin-top:16px;">
+                <button class="btn primary" type="submit">
+                    Submit Question →
+                </button>
+            </div>
+        </form>
+
+    </div>
+
+    <!-- ANSWERED QUESTIONS -->
+    <h2 class="section-title" style="text-align:center;">
+        Answered Questions
+    </h2>
+
+    <div class="modern-grid">
+
+        {% for q in questions %}
+        <div class="modern-card">
+
+            <h3 style="font-size:18px;">
+                ❓ {{ q.question }}
+            </h3>
+
+            <p style="margin-top:12px;font-size:15px;color:#475569;">
+                <strong style="color:#2563eb;">Answer</strong><br>
+                {{ q.answer|linebreaks }}
+            </p>
+
+        </div>
+        {% empty %}
+        <div class="modern-card" style="text-align:center;">
+            <p style="font-size:16px;color:#64748b;">
+                No answers yet 🤍 <br>
+                Be the first one to ask a thoughtful question.
+            </p>
+        </div>
+        {% endfor %}
+
+    </div>
+
+</section>
+
+{% endblock %}
