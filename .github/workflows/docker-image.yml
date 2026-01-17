@@ -30,7 +30,7 @@ jobs:
       - name: Build Docker image
         run: |
           docker build \
-            -f django_site/Dockerfile \
+            -f Dockerfile \
             -t ${{ secrets.DOCKERHUB_USERNAME }}/pythonsite_new:${{ steps.vars.outputs.TAG }} .
 
       # 5️⃣ Install Trivy
